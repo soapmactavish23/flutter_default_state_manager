@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   syncfusion_flutter_gauges: ^24.1.45
   currency_text_input_formatter: ^2.1.10
+  intl: ^0.18.1
 
 dev_dependencies:
   flutter_test:
