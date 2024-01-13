@@ -1,18 +1,18 @@
 import 'dart:math';
 
+import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_default_state_manager/widgets/imc_gauge.dart';
-import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
 import 'package:intl/intl.dart';
 
-class ImcSetstatePage extends StatefulWidget {
-  const ImcSetstatePage({super.key});
+class Template extends StatefulWidget {
+  const Template({super.key});
 
   @override
-  State<ImcSetstatePage> createState() => _ImcSetstatePageState();
+  State<Template> createState() => _TemplateState();
 }
 
-class _ImcSetstatePageState extends State<ImcSetstatePage> {
+class _TemplateState extends State<Template> {
   final pesoEC = TextEditingController();
   final alturaEC = TextEditingController();
   final formKey = GlobalKey<FormState>();

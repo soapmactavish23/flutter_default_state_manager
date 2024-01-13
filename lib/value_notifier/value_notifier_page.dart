@@ -1,28 +1,26 @@
 import 'dart:math';
 
+import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_default_state_manager/widgets/imc_gauge.dart';
-import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
 import 'package:intl/intl.dart';
 
-class ImcSetstatePage extends StatefulWidget {
-  const ImcSetstatePage({super.key});
+class ValueNotifierPage extends StatefulWidget {
+  const ValueNotifierPage({super.key});
 
   @override
-  State<ImcSetstatePage> createState() => _ImcSetstatePageState();
+  State<ValueNotifierPage> createState() => _ValueNotifierPageState();
 }
 
-class _ImcSetstatePageState extends State<ImcSetstatePage> {
+class _ValueNotifierPageState extends State<ValueNotifierPage> {
   final pesoEC = TextEditingController();
   final alturaEC = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
-  double imc = 0.0;
+  var imc = ValueNotifier<double>(0.0);
 
   void _calcImc({required double peso, required double altura}) {
-    setState(() {
-      imc = peso / pow(altura, 2);
-    });
+    imc.value = peso / pow(altura, 2);
   }
 
   @override
@@ -45,7 +43,12 @@ class _ImcSetstatePageState extends State<ImcSetstatePage> {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
-                ImcGauge(imc: imc),
+                ValueListenableBuilder<double>(
+                  valueListenable: imc,
+                  builder: (_, imcValue, __) {
+                    return ImcGauge(imc: imcValue);
+                  },
+                ),
                 const SizedBox(
                   height: 20,
                 ),
